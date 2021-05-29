@@ -1,5 +1,5 @@
-import Layout                        from '@components/Layout'
-import fs                            from 'fs'
+import DefaultLayout from 'src/layouts/DefaultLayout'
+import fs            from 'fs'
 import matter                        from 'gray-matter'
 import { MDXRemote }                 from 'next-mdx-remote'
 import { serialize }                 from 'next-mdx-remote/serialize'
@@ -69,6 +69,6 @@ export const getStaticPaths = async () => {
   }
 }
 
-PostPage.Layout = Layout
+PostPage.Layout = DefaultLayout
 
 export default PostPage

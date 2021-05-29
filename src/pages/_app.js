@@ -2,8 +2,8 @@
 import { GlobalStyle } from '@styles/GlobalStyles'
 
 import { useDarkMode } from '@hooks/useDarkMode'
-import Layout          from '@components/Layout'
-import themes          from '@styles/theme'
+import DefaultLayout   from '@layouts/DefaultLayout'
+import Head        from 'next/head'
 
 import { ThemeProvider } from 'styled-components'
 
@@ -21,9 +21,12 @@ const MyApp = ({ Component, pageProps }) =>
   return (
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
-      <Layout>
+      <DefaultLayout>
+        <Head>
+          <title>oss-advocacy</title>
+        </Head>
         <Component {... pageProps} />
-      </Layout>
+      </DefaultLayout>
     </ThemeProvider>
   )
 }
