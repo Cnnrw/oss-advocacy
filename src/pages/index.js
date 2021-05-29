@@ -1,4 +1,4 @@
-import Layout                        from '@components/Layout'
+import DefaultLayout                 from '@layouts/DefaultLayout'
 import fs                            from 'fs'
 import matter                        from 'gray-matter'
 import Link                          from 'next/link'
@@ -39,6 +39,6 @@ export function getStaticProps() {
   return { props: { posts } }
 }
 
-Index.Layout = Layout
+Index.Layout = DefaultLayout
 
 export default Index
