@@ -2,8 +2,8 @@ import dynamic                                  from 'next/dynamic'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { scaleSequentialSqrt }                  from 'd3-scale'
 import { interpolateYlOrRd }                    from 'd3-scale-chromatic'
-import earthTexture                             from 'public/assets/earth-dark.jpg'
-import universeTexture                          from 'public/assets/night-sky.png'
+import earthTexture                             from 'public/static/images/earth-dark.jpg'
+import universeTexture                          from 'public/static/images/night-sky.png'
 
 import data from 'data/ne_110m_admin_0_countries.json'
 
