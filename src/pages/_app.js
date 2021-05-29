@@ -1,16 +1,15 @@
-// import '@/styles/globals.css'
 import { GlobalStyle } from '@styles/GlobalStyles'
+import themes          from '@styles/theme'
 
 import { useDarkMode } from '@hooks/useDarkMode'
-import DefaultLayout   from '@layouts/DefaultLayout'
-import Head        from 'next/head'
+import Layout          from '@layouts/DefaultLayout'
+import Head            from 'next/head'
 
 import { ThemeProvider } from 'styled-components'
 
 const Noop = ({ children }) => children
 
-const MyApp = ({ Component, pageProps }) =>
-{
+const MyApp = ({ Component, pageProps }) => {
   const [theme, toggleTheme, componentMounted] = useDarkMode()
   const themeMode = theme === 'light' ? themes.light : themes.dark
 
@@ -21,12 +20,12 @@ const MyApp = ({ Component, pageProps }) =>
   return (
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
-      <DefaultLayout>
+      <Layout>
         <Head>
           <title>oss-advocacy</title>
         </Head>
         <Component {... pageProps} />
-      </DefaultLayout>
+      </Layout>
     </ThemeProvider>
   )
 }
