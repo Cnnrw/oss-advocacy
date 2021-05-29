@@ -1,3 +1,4 @@
+import Footer     from '@components/Footer/Footer'
 import SiteHeader from '@components/SiteHeader'
 import styled     from 'styled-components'
 
@@ -21,12 +22,13 @@ const Container = styled.main`
   margin-top: 3rem;
 `
 
-const Layout = ({ children }) =>
+const DefaultLayout = ({ children }) =>
   <MainContent>
     <SiteHeader />
     <Container>
       {children}
     </Container>
+    {/*<Footer />*/}
   </MainContent>
 
-export default Layout
+export default DefaultLayout
