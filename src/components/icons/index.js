@@ -1,7 +1,7 @@
 import StyledIcon from './StyledIcon'
-import Github from './Github'
+import GithubIcon from './Github'
 
 export {
   StyledIcon,
-  Github
+  GithubIcon
 }
