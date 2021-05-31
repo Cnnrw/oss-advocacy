@@ -25,8 +25,11 @@ export const Footer = () => {
           mb: 3
         }}>
 
-          <Text variant="styles.label" color='black'>
-            Copyright &copy; {currentDate.getFullYear()}, Connor Wilding
+          <Text variant="styles.label" sx={{
+            color: 'black',
+            display: 'inline-block'
+          }}>
+            Copyright &copy; {currentDate.getFullYear()}, <span>Connor Wilding</span>
           </Text>
 
         </Box>
