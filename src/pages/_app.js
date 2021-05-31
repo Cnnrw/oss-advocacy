@@ -1,33 +1,21 @@
-import { GlobalStyle } from '@styles/GlobalStyles'
-import themes          from '@styles/theme'
-
-import { useDarkMode } from '@hooks/useDarkMode'
-import Layout          from '@layouts/DefaultLayout'
-import Head            from 'next/head'
-
-import { ThemeProvider } from 'styled-components'
+import { DefaultSeo }    from 'next-seo'
+import SEO               from '@config/next-seo.config'
+import { ThemeProvider } from 'theme-ui'
+import Theme             from '@styles/default'
 
 const Noop = ({ children }) => children
 
-const MyApp = ({ Component, pageProps }) => {
-  const [theme, toggleTheme, componentMounted] = useDarkMode()
-  const themeMode = theme === 'light' ? themes.light : themes.dark
-
-  if (!componentMounted) return <div />
-
+const App = ({ Component, pageProps }) => {
   const Layout = Component.Layout || Noop
 
   return (
-    <ThemeProvider theme={themeMode}>
-      <GlobalStyle />
+    <ThemeProvider theme={Theme}>
       <Layout>
-        <Head>
-          <title>oss-advocacy</title>
-        </Head>
+        <DefaultSeo {... SEO} />
         <Component {... pageProps} />
       </Layout>
     </ThemeProvider>
   )
 }
 
-export default MyApp
+export default App
