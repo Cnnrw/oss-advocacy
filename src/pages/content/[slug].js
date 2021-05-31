@@ -1,18 +1,24 @@
-import DefaultLayout from 'src/layouts/DefaultLayout'
-import fs            from 'fs'
+import fs                            from 'fs'
 import matter                        from 'gray-matter'
 import { MDXRemote }                 from 'next-mdx-remote'
 import { serialize }                 from 'next-mdx-remote/serialize'
 import dynamic                       from 'next/dynamic'
 import Head                          from 'next/head'
 import path                          from 'path'
+import { Box, Heading }              from 'theme-ui'
+
+import SEO                           from '@components/SEO'
+import Layout                        from '@layouts/BaseLayout'
+import { UIComponents }              from '@layouts/Theme'
 import { postFilePaths, POSTS_PATH } from '@utils/mdxUtils'
+
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
 // here.
 const components = {
+  ...UIComponents,
   // It also works with dynamically-imported components, which is especially
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.
@@ -20,18 +26,45 @@ const components = {
   Head
 }
 
-const PostPage = ({ source, frontMatter }) =>
-  <div className='bx--grid'>
-    <div>
-      <h2 style={{ margin: '0 0 30px' }}>{frontMatter.title}</h2>
-      {frontMatter.description && (
-        <p className='description'>{frontMatter.description}</p>
-      )}
-    </div>
-    <main>
-      <MDXRemote {... source} components={components} />
-    </main>
-  </div>
+const PostPage = ({ slug, source, frontMatter }) => {
+  return (
+    <>
+      <SEO key={`seo-${slug}`}
+           title={frontMatter.title}
+           description={frontMatter.description} />
+
+      <Box bg="white"
+           py={[1, 2]}
+           as="article"
+           className={'ArticlePage ' + frontMatter.section}
+           id="Article">
+
+        {/*----- Cover image only on blog -----*/}
+        {/*{frontMatter.section === 'blog' && (*/}
+        {/*  <Cover image={post.frontmatter.cover_image} />*/}
+        {/*)}*/}
+
+        <section className="container">
+          {/*----- Post content -----*/}
+          <section className="content">
+            <Box px={[4, 4, 6]}>
+
+              <Heading variant="header" mt={6} mb={3}>
+                {frontMatter.title}
+              </Heading>
+              <Heading color="black" variant="label" mb={5}>
+                {frontMatter.date}
+              </Heading>
+            </Box>
+            <Box maxWidth="text" px={[4, 4, 6]}>
+              <MDXRemote {... source} components={components} />
+            </Box>
+          </section>
+        </section>
+      </Box>
+    </>
+  )
+}
 
 export const getStaticProps = async ({ params }) => {
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
@@ -43,16 +76,17 @@ export const getStaticProps = async ({ params }) => {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
       remarkPlugins: [],
-      rehypePlugins: []
+      rehypePlugins: [],
     },
-    scope: data
+    scope: data,
   })
 
   return {
     props: {
       source: mdxSource,
-      frontMatter: data
-    }
+      frontMatter: data,
+      slug: params.slug,
+    },
   }
 }
 
@@ -69,6 +103,6 @@ export const getStaticPaths = async () => {
   }
 }
 
-PostPage.Layout = DefaultLayout
+PostPage.Layout = Layout
 
 export default PostPage
