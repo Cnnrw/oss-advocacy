@@ -1,3 +1,101 @@
+const heading = {
+  color: 'text',
+  fontFamily: 'heading',
+  lineHeight: '1.25',
+  fontWeight: 'heading',
+}
+
+const base = {
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  fonts: {
+    body: 'Roboto, Helvetica Neue, Helvetica, Aria, sans-serif',
+    heading: 'Archivo, Helvetica Neue, Helvetica, Aria, sans-serif',
+    monospace: 'Menlo, monospace'
+  },
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
+  fontWeights: {
+    body: 400,
+    heading: 500,
+    bold: 700
+  },
+  lineHeights: {
+    body: 1.75,
+    display: 1.5,
+    heading: 1.25,
+  },
+  colors: {
+    text: '',
+    background: '',
+    primary: '',
+    secondary: '',
+    muted: '',
+  },
+  styles: {
+    root: {
+      fontFamily: 'body',
+      lineHeight: 'body',
+      fontWeight: 'body',
+    },
+    h1: {
+      ...heading,
+      fontSize: 5,
+    },
+    h2: {
+      ...heading,
+      fontSize: 4,
+    },
+    h3: {
+      ...heading,
+      fontSize: 3,
+    },
+    h4: {
+      ...heading,
+      fontSize: 2,
+    },
+    h5: {
+      ...heading,
+      fontSize: 1,
+    },
+    h6: {
+      ...heading,
+      fontSize: 0,
+    },
+    p: {
+      color: 'text',
+      fontFamily: 'body',
+      fontWeight: 'body',
+      lineHeight: 'body',
+    },
+    a: {
+      color: 'primary',
+    },
+    pre: {
+      fontFamily: 'monospace',
+      overflowX: 'auto',
+      code: {
+        color: 'inherit',
+      },
+    },
+    code: {
+      fontFamily: 'monospace',
+      fontSize: 'inherit',
+    },
+    table: {
+      width: '100%',
+      borderCollapse: 'separate',
+      borderSpacing: 0,
+    },
+    th: {
+      textAlign: 'left',
+      borderBottomStyle: 'solid',
+    },
+    td: {
+      textAlign: 'left',
+      borderBottomStyle: 'solid',
+    },
+  }
+}
+
 export const animation = {
   default: '400ms ease-in',
   fast: '300ms ease-in'
@@ -8,13 +106,34 @@ export const breakpoints = [
   '320px',
   // tablet
   '768px',
-  // Computer
+  // computer
   '992px',
   // desktop
   '1200px',
   // widescreen
   '1920px'
 ]
+
+const size = {
+  // mobile
+  mobile: '320px',
+  // tablet
+  tablet: '768px',
+  // computer
+  computer: '992px',
+  // desktop
+  desktop: '1200px',
+  // widescreen
+  widescreen: '1920px'
+}
+
+const device = {
+  mobile: `(min-width: ${size.mobile})`,
+  tablet: `screen and (min-width: ${size.tablet})`,
+  computer: `screen and (min-width: ${size.computer})`,
+  desktop: `screen and (min-width: ${size.desktop})`,
+  widescreen: `screen and (min-width: ${size.widescreen})`
+}
 
 export const fonts = {
   body: 'Roboto, Helvetica Neue, Helvetica, Aria, sans-serif',
@@ -32,23 +151,36 @@ export const colors = {
   highlight: 'hsla(205, 100%, 40%, 0.125)',
   white: '#FFF',
   black: '#111212',
+  modes: {
+    dark: {
+      text: '#FFF',
+      background: '#000',
+      primary: '#005CDD',
+      secondary: '#6D59F0',
+      muted: '#060609',
+      gray: '#D3D7DA',
+      highlight: 'hsla(205, 100%, 40%, 0.125)',
+      white: '#000',
+      black: '#EEE'
+    }
+  }
 }
 
 export const gradients = {
   subtle: `linear-gradient(180deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
   purple: `linear-gradient(180deg, ${colors.primary} 0%, #A000C4 100%)`,
-  blue: `linear-gradient(180deg, #00D2FF 0%, ${colors.secondary} 100%)`,
+  blue: `linear-gradient(180deg, #00D2FF 0%, ${colors.secondary} 100%)`
 }
 
 export const theme = {
   animation,
-  breakpoints,
+  breakpoints: [32, 48, 64, 96, 128].map(w => `${w}em`),
   mediaQueries: {
-    mobile: `@media screen and (min-width: ${breakpoints[0]})`,
-    tablet: `@media screen and (min-width: ${breakpoints[1]})`,
-    computer: `@media screen and (min-width: ${breakpoints[2]})`,
-    desktop: `@media screen and (min-width: ${breakpoints[3]})`,
-    widescreen: `@media screen and (min-width: ${breakpoints[4]})`,
+    mobile: `@media screen and (min-width: 320px)`,
+    tablet: `@media screen and (min-width: 768px)`,
+    computer: `@media screen and (min-width: 992px)`,
+    desktop: `@media screen and (min-width: 1200px)`,
+    widescreen: `@media screen and (min-width: 1920px)`
   },
   colors,
   gradients,
@@ -57,68 +189,50 @@ export const theme = {
   fontWeights: {
     body: 400,
     heading: 500,
-    bold: 700,
+    bold: 700
   },
   lineHeights: {
     body: 1.5,
-    heading: 1.25,
+    heading: 1.25
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   sizes: {
-    avatar: 48,
-    text: breakpoints[2],
+    mobile: '320px',
+    // tablet
+    tablet: '768px',
+    // computer
+    computer: '992px',
+    // desktop
+    desktop: '1200px',
+    // widescreen
+    widescreen: '1920px',
   },
   radii: {
     default: 0,
-    circle: 99999,
+    circle: 99999
   },
   shadows: {
     card: {
       light: '15px 15px 35px rgba(0, 127, 255, 0.5)',
-      dark: `7px 7px 15px ${colors.primary}`,
-    },
+      dark: `7px 7px 15px ${colors.primary}`
+    }
   },
-  // rebass variants
+
   text: {
-    header: {
-      fontFamily: fonts.heading,
+    heading: {
+      fontFamily: 'heading',
       lineHeight: '1.25',
       fontSize: [6, 6, 6, 6],
-      marginBottom: 3,
+      marginBottom: 3
     },
-    subheader: {
-      fontFamily: fonts.heading,
+    subheading: {
+      fontFamily: 'heading',
       lineHeight: '1.25',
       fontSize: [3, 3, 4, 4],
-      marginBottom: 3,
-    },
-    h2: {
-      fontFamily: fonts.heading,
-      lineHeight: '1.25',
-      fontSize: [2, 3, 4, 5],
-      marginBottom: 3,
-    },
-    h3: {
-      fontFamily: fonts.heading,
-      lineHeight: '1.25',
-      fontSize: [2, 2, 3, 3],
-      marginBottom: 3,
-    },
-    h4: {
-      fontFamily: fonts.heading,
-      lineHeight: '1.25',
-      fontSize: [1],
-      marginBottom: 3,
-    },
-    label: {
-      fontFamily: fonts.heading,
-      lineHeight: '1.25',
-      fontSize: [0],
-      letterSpacing: '0.1em',
-      textTransform: 'uppercase',
+      marginBottom: 3
     },
     paragraph: {
-      fontFamily: fonts.body,
+      fontFamily: 'body',
       lineHeight: '1.75',
       fontSize: [1, 2],
       marginBottom: 4,
@@ -129,30 +243,161 @@ export const theme = {
         border: '1px solid',
         borderColor: 'black',
         backgroundColor: 'muted',
-        color: 'primary',
-      },
+        color: 'primary'
+      }
     },
     list: {
       fontFamily: fonts.body,
       lineHeight: '1.75',
       fontSize: [1, 2],
-      marginBottom: 3,
+      marginBottom: 3
     },
     display: {
-      fontFamily: fonts.body,
+      fontFamily: 'body',
       lineHeight: '1.5',
-      fontSize: [5, 6, 7],
+      fontSize: [5, 6, 7]
     },
     caps: {
       textTransform: 'uppercase',
-      letterSpacing: '0.1em',
-    },
+      letterSpacing: '0.1em'
+    }
   },
-  variants: {
+
+  links: {
+    nav: {
+      fontSize: [1],
+      fontWeight: 'bold',
+      textDecoration: 'none',
+      display: 'inline-block',
+      p: [2],
+
+      ':hover, :focus, .active': {
+        color: 'primary'
+      }
+    },
+    footerLink: {
+      borderBottom: 0,
+      marginRight: '1em',
+      opacity: 0.5,
+      transition: 'opacity ' + animation.default,
+
+      '&:hover': {
+        opacity: 1
+      },
+
+      '& svg': {
+        maxWidth: '30px',
+        maxHeight: '30px'
+      }
+    }
+  },
+
+  // // rebass variants
+  // variants: {
+  //   avatar: {
+  //     width: 'avatar',
+  //     height: 'avatar',
+  //     borderRadius: 'circle'
+  //   },
+  //   card: {
+  //     p: 2,
+  //     bg: 'background',
+  //     boxShadow: 'card',
+  //     avatar: {
+  //       width: 'avatar',
+  //       height: 'avatar',
+  //       backgroundSize: 'cover',
+  //       backgroundPosition: 'center',
+  //       marginBottom: '3rem'
+  //     }
+  //   },
+  //   link: {
+  //     color: 'primary'
+  //   },
+  //   nav: {
+  //     fontSize: 1,
+  //     fontWeight: 'bold',
+  //     display: 'inline-block',
+  //     p: 2,
+  //     color: 'inherit',
+  //     textDecoration: 'none',
+  //     ':hover,:focus,.active': {
+  //       color: 'primary'
+  //     }
+  //   },
+  //   hr: {
+  //     width: '100%',
+  //     borderTop: 0,
+  //     borderBottom: '1px solid black',
+  //     my: 4
+  //   }
+  // },
+
+  buttons: {
+    primary: {
+      fontSize: 2,
+      fontWeight: 'bold',
+      color: 'background',
+      bg: 'primary',
+      borderRadius: 'default',
+      padding: '1em 4em'
+    },
+    outline: {
+      variant: 'buttons.primary',
+      color: 'black',
+      bg: 'transparent',
+      border: '1px solid #000',
+      textTransform: 'uppercase',
+      letterSpacing: '0.1em',
+      fontSize: 1
+    },
+    secondary: {
+      variant: 'buttons.primary',
+      color: 'background',
+      bg: 'secondary'
+    }
+  },
+
+
+  styles: {
+    root: {
+      fontFamily: 'body',
+      fontWeight: 'normal',
+      lineHeight: '1.5'
+    },
+    h2: {
+      variant: 'text.heading',
+      fontSize: [2, 3, 4, 5],
+    },
+    h3: {
+      variant: 'text.heading',
+      fontSize: [2, 2, 3, 3]
+    },
+    h4: {
+      variant: 'text.heading',
+      fontSize: [1]
+    },
+    label: {
+      variant: 'text.heading',
+      fontSize: [0],
+      letterSpacing: '0.1em',
+      textTransform: 'uppercase'
+    },
+    p: {
+      variant: 'text.paragraph'
+    },
+    break: {
+      width: '100%',
+      borderTop: 0,
+      borderBottom: '1px solid',
+      borderBottomColor: 'black',
+      my: 4
+    },
+
     avatar: {
       width: 'avatar',
       height: 'avatar',
-      borderRadius: 'circle',
+      borderRadius: 'circle'
     },
     card: {
       p: 2,
@@ -163,59 +408,12 @@ export const theme = {
         height: 'avatar',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        marginBottom: '3rem',
-      },
-    },
-    link: {
-      color: 'primary',
-    },
-    nav: {
-      fontSize: 1,
-      fontWeight: 'bold',
-      display: 'inline-block',
-      p: 2,
-      color: 'inherit',
-      textDecoration: 'none',
-      ':hover,:focus,.active': {
-        color: 'primary',
-      },
+        marginBottom: '3rem'
+      }
     },
     hr: {
-      width: '100%',
-      borderTop: 0,
-      borderBottom: '1px solid black',
-      my: 4,
-    },
-  },
-  buttons: {
-    primary: {
-      fontSize: 2,
-      fontWeight: 'bold',
-      color: 'background',
-      bg: 'primary',
-      borderRadius: 'default',
-      padding: '1em 4em',
-    },
-    outline: {
-      variant: 'buttons.primary',
-      color: 'black',
-      bg: 'transparent',
-      border: '1px solid #000',
-      textTransform: 'uppercase',
-      letterSpacing: '0.1em',
-      fontSize: 1,
-    },
-    secondary: {
-      variant: 'buttons.primary',
-      color: 'background',
-      bg: 'secondary',
-    },
-  },
-  styles: {
-    root: {
-      fontFamily: fonts.body,
-      fontWeight: 'normal',
-      lineHeight: '1.5',
+      width: '90%',
+      p: 4
     },
   },
 }
