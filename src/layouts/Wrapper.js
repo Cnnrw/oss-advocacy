@@ -3,7 +3,6 @@ import dynamic                                     from 'next/dynamic'
 import Head                                        from 'next/head'
 import Link                                        from 'next/link'
 import React                                       from 'react'
-import ReactGA                                     from 'react-ga'
 import { Box, Flex, Heading, Text, ThemeProvider } from 'theme-ui'
 
 import Theme                                       from '@styles/default'
@@ -29,24 +28,11 @@ const UIComponents = {
   Head
 }
 
-const Wrapper = ({ children }) => {
-
-  if (process.env.NODE_ENV === 'production') {
-    ReactGA.initialize(process.env.PUBLIC_GA_ID)
-    ReactGA.set({ anonymizeIp: true })
-
-    if (typeof window !== 'undefined') {
-      ReactGA.pageview(window.location.pathname + window.location.search)
-    }
-  }
-
-  return (
-    <MDXProvider components={UIComponents}>
-      <ThemeProvider theme={Theme}>
-        {children}
-      </ThemeProvider>
-    </MDXProvider>
-  )
-}
+const Wrapper = ({ children }) =>
+  <MDXProvider components={UIComponents}>
+    <ThemeProvider theme={Theme}>
+      {children}
+    </ThemeProvider>
+  </MDXProvider>
 
 export default Wrapper
