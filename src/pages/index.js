@@ -2,8 +2,8 @@ import fs                                    from 'fs'
 import matter                                from 'gray-matter'
 import dynamic                               from 'next/dynamic'
 import path                                  from 'path'
-import React                                 from 'react'
-import { Container, Divider, Heading, Text } from 'theme-ui'
+import React                                      from 'react'
+import { Box, Container, Divider, Heading, Text } from 'theme-ui'
 
 import Link                          from '@components/Link'
 import Layout                        from '@layouts/BaseLayout'
@@ -13,9 +13,14 @@ const Globe = dynamic(() => import('@components/Globe/Globe'))
 
 const Index = ({ posts }) => {
   return (
-    <Container>
+    <Container px={[1, 2]}>
 
-      <Heading>Handling</Heading>
+      <Box px={[4, 4, 6]}>
+
+      <Heading mt={6}
+               mb={3}>
+        Handling
+      </Heading>
 
       <Divider />
 
@@ -35,6 +40,7 @@ const Index = ({ posts }) => {
           </li>
         ))}
       </ul>
+      </Box>
     </Container>
   )
 }
