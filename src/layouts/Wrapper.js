@@ -41,9 +41,11 @@ const Wrapper = ({ children }) => {
   }
 
   return (
-    <ThemeProvider theme={Theme}>
-      {children}
-    </ThemeProvider>
+    <MDXProvider components={UIComponents}>
+      <ThemeProvider theme={Theme}>
+        {children}
+      </ThemeProvider>
+    </MDXProvider>
   )
 }
 
