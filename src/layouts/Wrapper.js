@@ -1,6 +1,33 @@
-import { ThemeProvider } from 'theme-ui'
-import Theme             from '@styles/theme'
-import ReactGA           from 'react-ga'
+import { MDXProvider }                             from '@mdx-js/react'
+import dynamic                                     from 'next/dynamic'
+import Head                                        from 'next/head'
+import Link                                        from 'next/link'
+import React                                       from 'react'
+import ReactGA                                     from 'react-ga'
+import { Box, Flex, Heading, Text, ThemeProvider } from 'theme-ui'
+
+import Theme                                       from '@styles/default'
+import List                                        from '@components/List/List'
+import ListItem from '@components/List/ListItem'
+
+const UIComponents = {
+  h1: (props) => <Heading variant='header' {...props} />,
+  h2: (props) => <Heading variant='subheader' {...props} />,
+  h3: (props) => <Heading variant='h3' {... props} />,
+  h4: (props) => <Heading variant='h4' {... props} />,
+  p: (props) => <Text as='p' variant='paragraph' {... props} />,
+  hr: (props) => <Box as='hr' variant='hr' {... props} />,
+  ul: List,
+  li: ListItem,
+  pre: (props) => <div {... props} />,
+  flex: Flex,
+  box: Box,
+  a: Link,
+  heading: Heading,
+
+  Globe: dynamic(() => import('@components/Globe/Globe')),
+  Head
+}
 
 const Wrapper = ({ children }) => {
 
@@ -19,3 +46,5 @@ const Wrapper = ({ children }) => {
     </ThemeProvider>
   )
 }
+
+export default Wrapper
