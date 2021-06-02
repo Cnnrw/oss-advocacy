@@ -2,29 +2,12 @@ import fs                          from 'fs'
 import matter                      from 'gray-matter'
 import { MDXRemote }               from 'next-mdx-remote'
 import { serialize }               from 'next-mdx-remote/serialize'
-import dynamic                     from 'next/dynamic'
-import Head                        from 'next/head'
 import path                        from 'path'
-import { Box, Container, Heading } from 'theme-ui'
+import { Box, Heading } from 'theme-ui'
 
 import SEO                           from '@components/SEO'
 import Layout                        from '@layouts/BaseLayout'
-import { UIComponents }              from '@layouts/Theme'
 import { postFilePaths, POSTS_PATH } from '@utils/mdxUtils'
-
-
-// Custom components/renderers to pass to MDX.
-// Since the MDX files aren't loaded by webpack, they have no knowledge of how
-// to handle import statements. Instead, you must include components in scope
-// here.
-const components = {
-  ... UIComponents,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
-  Globe: dynamic(() => import('@components/Globe/Globe')),
-  Head
-}
 
 const PostPage = ({ slug, source, frontMatter }) => {
   return (
@@ -44,7 +27,7 @@ const PostPage = ({ slug, source, frontMatter }) => {
         {/*  <Cover image={post.frontmatter.cover_image} />*/}
         {/*)}*/}
 
-        <Container as='section'>
+        <section className='container'>
 
           {/*----- Post content -----*/}
           <section className='content'>
@@ -58,10 +41,10 @@ const PostPage = ({ slug, source, frontMatter }) => {
               </Heading>
             </Box>
             <Box maxWidth='text' px={[4, 4, 6]}>
-              <MDXRemote {... source} components={components} />
+              <MDXRemote {...source} />
             </Box>
           </section>
-        </Container>
+        </section>
       </Box>
     </>
   )
