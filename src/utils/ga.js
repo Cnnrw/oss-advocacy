@@ -1,10 +1,13 @@
-import ReactGA from 'react-ga'
-
-export const initGA = () => {
-  ReactGA.initialize(process.env.PUBLIC_GA_ID)
+export const logPageView = url => {
+  window.gtag('config', process.env.NEXT_PUBLIC_GA, {
+    page_path: url
+  })
 }
 
-export const logPageView = () => {
-  ReactGA.set({ page: window.location.pathname })
-  ReactGA.pageview(window.location.pathname)
+export const event = ({ action, category, label, value }) => {
+  window.gtag('event', action, {
+    event_category: category,
+    event_label: label,
+    value: value
+  })
 }
