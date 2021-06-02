@@ -13,6 +13,7 @@ const StyledLabel = styled.label`
   & input {
     display: none;
   }
+
   & .slider {
     background-color: #fff;
     border: 1px solid #000;
@@ -24,6 +25,7 @@ const StyledLabel = styled.label`
     top: 0;
     transition: 0.4s;
   }
+
   & .slider:before {
     background-color: #333;
     border: 1px solid #000;
