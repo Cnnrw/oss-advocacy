@@ -14,7 +14,7 @@ const BaseLayout = ({ title, description, twitter, openGraph, children }) => (
     <MobileHeader />
 
     <Box bg='white'
-         as='section'
+         as='main'
          pt='4.8rem'
          maxWidth='1920px'
          margin='auto'
