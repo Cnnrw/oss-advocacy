@@ -277,7 +277,6 @@ export const theme = {
     },
     footerLink: {
       borderBottom: 0,
-      marginRight: '1em',
       opacity: 0.5,
       transition: 'opacity ' + animation.default,
 
@@ -363,7 +362,6 @@ export const theme = {
     root: {
       fontFamily: 'body',
       fontWeight: 'normal',
-      lineHeight: '1.5'
     },
     h2: {
       variant: 'text.heading',
