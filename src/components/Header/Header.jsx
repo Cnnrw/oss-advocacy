@@ -141,12 +141,18 @@ const HeaderContainer = ({ children }) =>
     {children}
   </Flex>
 
-const MobileButton = ({ children }) =>
+const MobileButton = ({ toggleVisibility, visible, children }) =>
   <Box
+    id="MobileButtonToggle"
+    type='button'
+    onClick={toggleVisibility}
+    aria-expanded={visible}
+    aria-pressed={visible}
+    aria-label='Navigation Button'
     sx={{
-      mr: '1em',
+    mr: '1em',
 
-      '& svg': {
+    '& svg': {
         cursor: 'pointer',
         webkitTapHighlightColor: 'transparent',
         transition: theme => `transform ${theme.animation.default}`,
@@ -252,6 +258,7 @@ const Header = React.memo(
         </HeaderNav>
 
         <Flex mr={4}
+              pt='1em'
               justifyContent="center"
               flexDirection="column"
               className="toggle">
@@ -260,12 +267,8 @@ const Header = React.memo(
 
         {mobile && (
           <MobileButton
-            id="MobileButtonToggle"
-            as='button'
-            onClick={toggleVisibility}
-            aria-expanded={visible}
-            aria-pressed={visible}
-            aria-label='Navigation Button'>
+            toggleVisibility={toggleVisibility}
+            visible={visible}>
 
             <svg className={visible ? 'active' : ''}
                  viewBox='0 0 100 100'
