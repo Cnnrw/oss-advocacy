@@ -6,8 +6,8 @@ import { interpolateYlOrRd }                    from 'd3-scale-chromatic'
 import earthTexture                             from 'public/static/images/earth-dark.jpg'
 import universeTexture                          from 'public/static/images/night-sky.png'
 
-import data          from 'data/ne_110m_admin_0_countries.json'
-import { Container } from 'theme-ui'
+import data                from 'data/ne_110m_admin_0_countries.json'
+import { Container, Flex } from 'theme-ui'
 
 const GlobeWrapper = dynamic(import('@components/Globe/GlobeWrapper'), { ssr: false })
 
@@ -43,9 +43,11 @@ const Globe = (props) => {
       setTransitionDuration(2000)
       setAltitude(() => feat => Math.max(0.1, Math.sqrt(+feat.properties.POP_EST) * 7e-5))
 
-      globeRef.current.controls().autoRotate = true;
-      globeRef.current.controls().autoRotateSpeed = 0.3;
-      globeRef.current.pointOfView({ altitude: 5 }, 2000)
+      if (globeRef.current) {
+        globeRef.current.controls().autoRotate = true;
+        globeRef.current.controls().autoRotateSpeed = 0.3;
+        globeRef.current.pointOfView({ altitude: 5 }, 2000)
+      }
     }, 3000)
   }, [])
 
@@ -71,6 +73,8 @@ const Globe = (props) => {
   return (
     <Container ref={sizeRef}
                sx={{
+                 mx: 'auto',
+                 width: '95%'
                }}>
       <GlobeWrapper
             globeImageUrl={earthTexture}
@@ -88,6 +92,8 @@ const Globe = (props) => {
               `}
             polygonsTransitionDuration={transitionDuration}
             forwardRef={globeRef}
+            height={size?.height}
+            width={size?.width}
             {...props}
           />
     </Container>
