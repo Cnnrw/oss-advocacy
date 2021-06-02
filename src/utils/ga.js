@@ -1,5 +1,7 @@
+export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA
+
 export const logPageView = url => {
-  window.gtag('config', process.env.NEXT_PUBLIC_GA, {
+  window.gtag('config', GA_TRACKING_ID, {
     page_path: url
   })
 }
