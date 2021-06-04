@@ -19,10 +19,10 @@ const UIComponents = {
   ul: List,
   li: ListItem,
   pre: (props) => <div {... props} />,
-  flex: Flex,
-  box: Box,
+  Flex: Flex,
+  Box: Box,
   a: Link,
-  heading: Heading,
+  Heading: Heading,
 
   Globe: dynamic(() => import('@components/Globe/Globe')),
   Head
