@@ -19,7 +19,7 @@ const PostPage = ({ slug, source, frontMatter }) => {
       <Box bg='white'
            py={[1, 2]}
            as='article'
-           className={'ArticlePage ' + frontMatter.section}
+           className={'ArticlePage ' + (frontMatter.section ?? '')}
            id='Article'
            sx={{
              wordWrap: 'break-word'
