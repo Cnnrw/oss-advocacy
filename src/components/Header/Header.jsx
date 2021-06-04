@@ -7,6 +7,7 @@ import Link                         from 'next/link'
 const HeaderNav = styled.nav`
   display: inline-block;
   margin-right: 1em;
+  align-items: center;
 
   & ul {
     margin-top: 1rem;
@@ -16,6 +17,7 @@ const HeaderNav = styled.nav`
     list-style-type: none;
     display: inline-block;
     margin-right: 2.25em;
+    cursor: pointer;
 
     & a {
       color: ${(props) => props.theme.colors.black};
@@ -128,15 +130,16 @@ const HeaderContainer = ({ children }) =>
     as='header'
     sx={{
       width: '100%',
-      justifyContent: 'flex-end',
       backgroundColor: 'white',
-      padding: '1rem',
+      padding: '.5rem',
       textAlign: 'right',
       borderBottom: (theme) => `1px solid ${theme.colors.black}`,
       position: 'fixed',
       top: 0,
       left: 0,
-      zIndex: 710
+      zIndex: 710,
+
+      justifyContent: 'flex-end',
     }}>
     {children}
   </Flex>
@@ -203,20 +206,37 @@ const HeaderTitle = ({ href, ariaLabel, children }) =>
     <NavLink
       aria-labelledby={ariaLabel}
       sx={{
-        fontSize: [5],
+        fontSize: [2, 3, 5],
         border: 0,
-        display: 'inline-block',
+        display: 'flex',
+        justifyContent: 'center',
+        alignContent: 'center',
+        flexDirection: 'column',
         position: 'relative',
+
+        '&:hover': {
+          transition: theme => `fill ${theme.animation.default}`
+        },
+
+        '&:hover path, &:focus path': {
+          fill: theme => `fill ${theme.colors.primary}`
+        },
 
         '&:after': {
           content: '""',
           width: '100%',
           height: '100%',
-          p: '.75em .75em',
-          display: 'block',
+          py: ['.65em','.61em'],
+          px: ['.5em'],
+          // // ml: '.3em',
+          // py: ['.1em'],
+          // px: ['.25em', '.2em'],
+          // pr: '.5em',
+          // pl: '1em',
+          // my: ['1.25em'],
           position: 'absolute',
-          top: '0',
-          left: '.75em',
+          top: 0,
+          left: '1em',
           background: theme => `${theme.colors.muted}`,
           border: theme => `1px solid ${theme.colors.black}`,
           transformOrigin: '0 50%',
@@ -227,7 +247,7 @@ const HeaderTitle = ({ href, ariaLabel, children }) =>
 
         '&:hover:after': {
           transform: 'translate(-1.25em, -1.05em) scaleX(1)'
-        }
+        },
       }}>
       {children}
     </NavLink>
@@ -259,8 +279,9 @@ const Header = React.memo(
         </HeaderNav>
 
         <Flex mr={4}
-              pt='1em'
+              // pt={['1.2em', '.95em', '1em', '1.1em']}
               justifyContent="center"
+              alignContent="center"
               flexDirection="column"
               className="toggle">
           <ThemeToggle />

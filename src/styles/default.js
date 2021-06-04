@@ -174,7 +174,7 @@ export const gradients = {
 
 export const theme = {
   animation,
-  breakpoints: [32, 48, 64, 96, 128].map(w => `${w}em`),
+  breakpoints: [320, 480, 769, 1025, 1201].map(w => `${w}px`),
   mediaQueries: {
     mobile: `@media screen and (min-width: 320px)`,
     tablet: `@media screen and (min-width: 768px)`,

@@ -4,7 +4,10 @@ import { useColorMode }  from 'theme-ui'
 
 const StyledLabel = styled.label`
   & {
+    margin: auto;
     display: flex;
+    justify-self: center;
+    align-content: center;
     height: 26px;
     position: relative;
     width: 55px;
@@ -39,11 +42,12 @@ const StyledLabel = styled.label`
     z-index: 421;
   }
   & > input:checked + .slider {
+    //transform: translateX(24px);
     background-color: #101211;
     border-color: #cfcfcf;
   }
   & > input:checked + .slider:before {
-    transform: translateX(28px);
+    transform: translateX(26px);
     border-color: #cfcfcf;
     background-color: #efefef;
   }
@@ -67,7 +71,8 @@ export const ThemeToggle = React.memo(() => {
   const [mode, setMode] = useColorMode()
 
   return (
-    <StyledLabel htmlFor="checkbox" title="Change color scheme to dark mode">
+    <StyledLabel htmlFor="checkbox"
+                 title="Change color scheme to dark mode">
       <input
         type="checkbox"
         id="checkbox"
