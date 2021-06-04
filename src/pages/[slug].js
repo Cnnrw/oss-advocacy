@@ -5,9 +5,9 @@ import { serialize }               from 'next-mdx-remote/serialize'
 import path                        from 'path'
 import { Box, Heading } from 'theme-ui'
 
-import SEO                           from '@components/SEO'
-import Layout                        from '@layouts/BaseLayout'
-import { postFilePaths, POSTS_PATH } from '@utils/mdxUtils'
+import SEO                                from '@components/SEO'
+import Layout                             from '@layouts/BaseLayout'
+import { contentFilePaths, CONTENT_PATH } from '@utils/mdxUtils'
 
 const PostPage = ({ slug, source, frontMatter }) => {
   return (
@@ -51,7 +51,7 @@ const PostPage = ({ slug, source, frontMatter }) => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
+  const postFilePath = path.join(CONTENT_PATH, `${params.slug}.mdx`)
   const source = fs.readFileSync(postFilePath)
 
   const { content, data } = matter(source)
@@ -75,7 +75,7 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-  const paths = postFilePaths
+  const paths = contentFilePaths
   // Remove file extensions for page paths
   .map((path) => path.replace(/\.mdx?$/, ''))
   // Map the path into the static paths object required by Next.js
