@@ -33,8 +33,7 @@ const PostPage = ({ slug, source, frontMatter }) => {
           <section className='content'>
 
               <Heading mt={6}
-                       mb={3}
-              >
+                       mb={3}>
                 {frontMatter.title}
               </Heading>
               <Heading color='black' variant='styles.label' mb={5}>

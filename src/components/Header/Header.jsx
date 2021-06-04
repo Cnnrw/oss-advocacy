@@ -263,16 +263,6 @@ const Header = React.memo(
             <li role='menuitem'
                 tabIndex={(mobile && !visible) ? 1 : -1}
                 onClick={toggleVisibility}>
-              <Link href='/background'>
-                <Text variant='styles.label'>
-                  Background
-                </Text>
-              </Link>
-            </li>
-
-            <li role='menuitem'
-                tabIndex={(mobile && !visible) ? 1 : -1}
-                onClick={toggleVisibility}>
               <Link href='/audience'>
                 <Text variant='styles.label'>
                   Audience
