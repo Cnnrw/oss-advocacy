@@ -131,7 +131,6 @@ const HeaderContainer = ({ children }) =>
     sx={{
       width: '100%',
       backgroundColor: 'white',
-      padding: '.5rem',
       textAlign: 'right',
       borderBottom: (theme) => `1px solid ${theme.colors.black}`,
       position: 'fixed',
@@ -153,7 +152,8 @@ const MobileButton = ({ toggleVisibility, visible, children }) =>
     aria-pressed={visible}
     aria-label='Navigation Button'
     sx={{
-    mr: '1em',
+      margin: 'auto',
+
 
     '& svg': {
         cursor: 'pointer',
@@ -279,7 +279,7 @@ const Header = React.memo(
         </HeaderNav>
 
         <Flex mr={4}
-              // pt={['1.2em', '.95em', '1em', '1.1em']}
+              ml={3}
               justifyContent="center"
               alignContent="center"
               flexDirection="column"
