@@ -29,7 +29,7 @@ const HeaderNav = styled.nav`
       }
 
       &:after {
-        content: '';
+        content: '""';
         width: 100%;
         padding: 1.25em;
         display: block;
@@ -203,19 +203,20 @@ const HeaderTitle = ({ href, ariaLabel, children }) =>
     <NavLink
       aria-labelledby={ariaLabel}
       sx={{
+        fontSize: [5],
         border: 0,
         display: 'inline-block',
         position: 'relative',
 
         '&:after': {
           content: '""',
-          width: '80px',
+          width: '100%',
           height: '100%',
-          p: '1em 1.25em',
+          p: '.75em .75em',
           display: 'block',
           position: 'absolute',
           top: '0',
-          left: '0',
+          left: '.75em',
           background: theme => `${theme.colors.muted}`,
           border: theme => `1px solid ${theme.colors.black}`,
           transformOrigin: '0 50%',
