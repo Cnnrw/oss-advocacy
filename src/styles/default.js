@@ -418,7 +418,8 @@ export const theme = {
     hr: {
       width: '100%',
       borderTop: 0,
-      borderBottom: '1px solid white',
+      borderBottom: `1px solid`,
+      borderBottomColor: 'black',
       my: 4
     },
   },
