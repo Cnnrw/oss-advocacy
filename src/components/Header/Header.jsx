@@ -153,7 +153,7 @@ const MobileButton = ({ toggleVisibility, visible, children }) =>
     aria-pressed={visible}
     aria-label='Navigation Button'
     sx={{
-      margin: 'auto',
+      marginRight: 'auto',
 
     '& svg': {
         cursor: 'pointer',
@@ -262,12 +262,17 @@ const HeaderNavLink = ({ as, href, ...props }) =>
           display: 'none'
         },
 
-        ':focus': {
-          outline: 'none'
+        '&:hover': {
+          transition: theme => `fill ${theme.animation.default}`
+        },
+
+        '&:hover path, &:focus path': {
+          fill: theme => `fill ${theme.colors.primary}`
         },
 
         '&:after': {
           content: '""',
+          outline: 'none',
           width: '100%',
           padding: '1.25em',
           display: 'block',
