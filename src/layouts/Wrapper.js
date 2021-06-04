@@ -23,6 +23,7 @@ const UIComponents = {
   Box: Box,
   a: Link,
   Heading: Heading,
+  Label: (props) => <Text variant='figureLabel' {...props} />,
 
   Globe: dynamic(() => import('@components/Globe/Globe')),
   Head

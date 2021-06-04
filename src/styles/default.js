@@ -260,7 +260,17 @@ export const theme = {
     caps: {
       textTransform: 'uppercase',
       letterSpacing: '0.1em'
-    }
+    },
+    figureLabel: {
+      fontFamily: 'monospace',
+      lineHeight: '1.25',
+      fontSize: ['10px'],
+      letterSpacing: '0.1em',
+      textTransform: 'uppercase',
+      marginTop: 1,
+      marginBottom: 3,
+      display: 'inline-block'
+    },
   },
 
   links: {

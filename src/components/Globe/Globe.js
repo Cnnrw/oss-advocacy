@@ -123,8 +123,6 @@ const Globe = (props) => {
                 `}
           polygonsTransitionDuration={transitionDuration}
           forwardRef={globeRef}
-          height={size?.height}
-          width={size?.width}
           {...props}
         />
     </Container>
