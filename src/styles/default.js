@@ -381,6 +381,12 @@ export const theme = {
       letterSpacing: '0.1em',
       textTransform: 'uppercase'
     },
+    headerLink: {
+      variant: 'text.heading',
+      fontSize: [0],
+      letterSpacing: '0.1em',
+      textTransform: 'uppercase'
+    },
     p: {
       variant: 'text.paragraph'
     },

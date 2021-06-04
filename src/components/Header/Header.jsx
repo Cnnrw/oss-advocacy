@@ -16,7 +16,7 @@ const HeaderNav = styled.nav`
   & li {
     list-style-type: none;
     display: inline-block;
-    margin-right: 2.25em;
+    margin-right: 2em;
     cursor: pointer;
 
     & a {
@@ -31,7 +31,7 @@ const HeaderNav = styled.nav`
       }
 
       &:after {
-        content: '""';
+        content: '';
         width: 100%;
         padding: 1.25em;
         display: block;
@@ -154,7 +154,6 @@ const MobileButton = ({ toggleVisibility, visible, children }) =>
     sx={{
       margin: 'auto',
 
-
     '& svg': {
         cursor: 'pointer',
         webkitTapHighlightColor: 'transparent',
@@ -260,25 +259,47 @@ const Header = React.memo(
               aria-hidden={mobile && visible}>
 
             <li role='menuitem'
-                tabIndex={(mobile && !visible) ? 1 : -1}>
-              <Link href='/'>
-                <Text variant='label'>
-                  Writing <span>📓</span>
+                tabIndex={(mobile && !visible) ? 1 : -1}
+                onClick={toggleVisibility}>
+              <Link href='/background'>
+                <Text variant='styles.label'>
+                  Background
+                </Text>
+              </Link>
+            </li>
+
+            <li role='menuitem'
+                tabIndex={(mobile && !visible) ? 1 : -1}
+                onClick={toggleVisibility}>
+              <Link href='/audience'>
+                <Text variant='styles.label'>
+                  Audience
+                </Text>
+              </Link>
+            </li>
+
+            <li role='menuitem'
+                tabIndex={(mobile && !visible) ? 1 : -1}
+                onClick={toggleVisibility}>
+              <Link href='/advocacy'>
+                <Text variant='styles.label'>
+                  Advocacy
+                </Text>
+              </Link>
+            </li>
+
+            <li role='menuitem'
+                tabIndex={(mobile && !visible) ? 1 : -1}
+                onClick={toggleVisibility}>
+              <Link href='/sources'>
+                <Text variant='styles.headerLink'>
+                  Sources
                 </Text>
               </Link>
             </li>
 
           </ul>
         </HeaderNav>
-
-        <Flex mr={4}
-              ml={3}
-              justifyContent="center"
-              alignContent="center"
-              flexDirection="column"
-              className="toggle">
-          <ThemeToggle />
-        </Flex>
 
         {mobile && (
           <MobileButton
@@ -298,6 +319,15 @@ const Header = React.memo(
 
           </MobileButton>
         )}
+
+        <Flex mr={4}
+              ml={3}
+              justifyContent="center"
+              alignContent="center"
+              flexDirection="column"
+              className="toggle">
+          <ThemeToggle />
+        </Flex>
 
         <HeaderTitle href='/'
                      ariaLabel='OSS Advocacy'>
