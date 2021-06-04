@@ -22,11 +22,6 @@ const PostPage = ({ slug, source, frontMatter }) => {
            className={'ArticlePage ' + frontMatter.section}
            id='Article'>
 
-        {/*----- Cover image only on blog -----*/}
-        {/*{frontMatter.section === 'blog' && (*/}
-        {/*  <Cover image={post.frontmatter.cover_image} />*/}
-        {/*)}*/}
-
         <section className='container'>
 
           {/*----- Post content -----*/}

@@ -222,7 +222,7 @@ export const theme = {
     heading: {
       fontFamily: 'heading',
       lineHeight: '1.25',
-      fontSize: [6, 6, 6, 6],
+      fontSize: [5, 5, 6, 6],
       marginBottom: 3
     },
     subheading: {
@@ -416,8 +416,10 @@ export const theme = {
       }
     },
     hr: {
-      width: '90%',
-      p: 4
+      width: '100%',
+      borderTop: 0,
+      borderBottom: '1px solid white',
+      my: 4
     },
   },
 }
