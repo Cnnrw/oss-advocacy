@@ -1,13 +1,13 @@
-import CustomLink                                  from '@components/Link'
 import { MDXProvider }                             from '@mdx-js/react'
 import dynamic                                     from 'next/dynamic'
 import Head                                        from 'next/head'
 import React                                       from 'react'
 import { Box, Flex, Heading, Text, ThemeProvider } from 'theme-ui'
 
-import Theme                                       from '@styles/default'
-import List                                        from '@components/List/List'
-import ListItem from '@components/List/ListItem'
+import CustomLink from '@components/Link'
+import Theme      from '@styles/default'
+import List       from '@components/List/List'
+import ListItem   from '@components/List/ListItem'
 
 const UIComponents = {
   h1: (props) => <Heading variant='header' {...props} />,
@@ -16,8 +16,8 @@ const UIComponents = {
   h4: (props) => <Heading variant='h4' {... props} />,
   p: (props) => <Text as='p' variant='paragraph' {... props} />,
   hr: (props) => <Box as='hr' variant='hr' {... props} />,
-  ul: List,
-  li: ListItem,
+  ul: props => <List {...props} />,
+  li: props => <ListItem {...props} />,
   pre: (props) => <div {... props} />,
   Flex: Flex,
   Box: Box,

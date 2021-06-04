@@ -2,9 +2,9 @@ import { useRouter }  from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import { useEffect }  from 'react'
 
-import SEO       from '@config/next-seo.config'
-import Wrapper   from '@layouts/Wrapper'
-import * as gtag from '@utils/ga'
+import SEO        from '@config/next-seo.config'
+import Wrapper    from '@layouts/Wrapper'
+import * as gtag  from '@utils/ga'
 import PageLayout from '@layouts/BaseLayout'
 
 const App = ({ Component, pageProps }) => {

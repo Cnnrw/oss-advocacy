@@ -1,138 +1,6 @@
-const heading = {
-  color: 'text',
-  fontFamily: 'heading',
-  lineHeight: '1.25',
-  fontWeight: 'heading',
-}
-
-const base = {
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  fonts: {
-    body: 'Roboto, Helvetica Neue, Helvetica, Aria, sans-serif',
-    heading: 'Archivo, Helvetica Neue, Helvetica, Aria, sans-serif',
-    monospace: 'Menlo, monospace'
-  },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
-  fontWeights: {
-    body: 400,
-    heading: 500,
-    bold: 700
-  },
-  lineHeights: {
-    body: 1.75,
-    display: 1.5,
-    heading: 1.25,
-  },
-  colors: {
-    text: '',
-    background: '',
-    primary: '',
-    secondary: '',
-    muted: '',
-  },
-  styles: {
-    root: {
-      fontFamily: 'body',
-      lineHeight: 'body',
-      fontWeight: 'body',
-    },
-    h1: {
-      ...heading,
-      fontSize: 5,
-    },
-    h2: {
-      ...heading,
-      fontSize: 4,
-    },
-    h3: {
-      ...heading,
-      fontSize: 3,
-    },
-    h4: {
-      ...heading,
-      fontSize: 2,
-    },
-    h5: {
-      ...heading,
-      fontSize: 1,
-    },
-    h6: {
-      ...heading,
-      fontSize: 0,
-    },
-    p: {
-      color: 'text',
-      fontFamily: 'body',
-      fontWeight: 'body',
-      lineHeight: 'body',
-    },
-    a: {
-      color: 'primary',
-    },
-    pre: {
-      fontFamily: 'monospace',
-      overflowX: 'auto',
-      code: {
-        color: 'inherit',
-      },
-    },
-    code: {
-      fontFamily: 'monospace',
-      fontSize: 'inherit',
-    },
-    table: {
-      width: '100%',
-      borderCollapse: 'separate',
-      borderSpacing: 0,
-    },
-    th: {
-      textAlign: 'left',
-      borderBottomStyle: 'solid',
-    },
-    td: {
-      textAlign: 'left',
-      borderBottomStyle: 'solid',
-    },
-  }
-}
-
 export const animation = {
   default: '400ms ease-in',
   fast: '300ms ease-in'
-}
-
-export const breakpoints = [
-  // mobile
-  '320px',
-  // tablet
-  '768px',
-  // computer
-  '992px',
-  // desktop
-  '1200px',
-  // widescreen
-  '1920px'
-]
-
-const size = {
-  // mobile
-  mobile: '320px',
-  // tablet
-  tablet: '768px',
-  // computer
-  computer: '992px',
-  // desktop
-  desktop: '1200px',
-  // widescreen
-  widescreen: '1920px'
-}
-
-const device = {
-  mobile: `(min-width: ${size.mobile})`,
-  tablet: `screen and (min-width: ${size.tablet})`,
-  computer: `screen and (min-width: ${size.computer})`,
-  desktop: `screen and (min-width: ${size.desktop})`,
-  widescreen: `screen and (min-width: ${size.widescreen})`
 }
 
 export const fonts = {
@@ -316,6 +184,7 @@ export const theme = {
       }
     }
   },
+
   buttons: {
     primary: {
       fontSize: 2,
@@ -340,7 +209,6 @@ export const theme = {
       bg: 'secondary'
     }
   },
-
 
   styles: {
     root: {
@@ -376,12 +244,12 @@ export const theme = {
       my: 4
     },
     a: {
-      color: theme => `${theme.colors.black}`,
-      borderBottom: theme => `${theme.colors.black}`,
+      color: 'black',
+      borderBottom: 'black',
 
       ':hover': {
-        color: theme => `${theme.colors.primary}`,
-        borderBottomColor: theme => `${theme.colors.primary}`
+        color: 'primary',
+        borderBottomColor: 'primary'
       }
     },
     avatar: {
