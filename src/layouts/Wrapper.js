@@ -1,7 +1,6 @@
 import { MDXProvider }                             from '@mdx-js/react'
 import dynamic                                     from 'next/dynamic'
 import Head                                        from 'next/head'
-import Link                                        from 'next/link'
 import React                                       from 'react'
 import { Box, Flex, Heading, Text, ThemeProvider } from 'theme-ui'
 
@@ -21,7 +20,6 @@ const UIComponents = {
   pre: (props) => <div {... props} />,
   Flex: Flex,
   Box: Box,
-  a: Link,
   Heading: Heading,
   Label: (props) => <Text variant='figureLabel' {...props} />,
 

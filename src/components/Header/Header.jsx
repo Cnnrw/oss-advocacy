@@ -1,7 +1,7 @@
 import ThemeToggle                  from '@components/ThemeToggle'
 import React                        from 'react'
 import styled                       from '@emotion/styled'
-import { Box, Flex, NavLink, Text } from 'theme-ui'
+import { Link as A, Box, Flex, NavLink, Text } from 'theme-ui'
 import Link                         from 'next/link'
 
 const HeaderNav = styled.nav`
@@ -20,7 +20,7 @@ const HeaderNav = styled.nav`
     cursor: pointer;
 
     & a {
-      color: ${(props) => props.theme.colors.black};
+      color: ${props => props.theme.colors.black};
       text-decoration: none;
       border: 0;
       position: relative;
@@ -38,8 +38,8 @@ const HeaderNav = styled.nav`
         position: absolute;
         top: 0;
         left: 0;
-        background: ${(props) => props.theme.colors.muted};
-        border: 1px solid ${(props) => props.theme.colors.black};
+        background: ${props => props.theme.colors.muted};
+        border: 1px solid ${props => props.theme.colors.black};
         transform-origin: 0 50%;
         transform: translate(-1.25em, -0.75em) scaleX(0);
         z-index: -1;
@@ -247,6 +247,49 @@ const HeaderTitle = ({ href, ariaLabel, visible, toggle, children }) =>
     </NavLink>
   </Link>
 
+const HeaderNavLink = ({ as, href, ...props }) =>
+  <Link as={as}
+        href={href}
+        passHref>
+    <A variant='headerLink'
+      sx={{
+        textDecoration: 'none',
+        border: '0',
+        position: 'relative',
+        display: 'block',
+
+       '& span': {
+          display: 'none'
+        },
+
+        ':focus': {
+          outline: 'none'
+        },
+
+        '&:after': {
+          content: '""',
+          width: '100%',
+          padding: '1.25em',
+          display: 'block',
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          background: theme => `${theme.colors.muted}`,
+          border: theme => `1px solid ${theme.colors.black}`,
+          transformOrigin: '0 50%',
+          transform: 'translate(-1.25em, -0.75em) scaleX(0)',
+          zIndex: '-1',
+          transition: 'transform 300ms ease-out'
+        },
+
+        '&:hover:after': {
+          transform: 'translate(-1.25em, -0.75em) scaleX(1)'
+        }
+      }}
+      {...props}
+    />
+  </Link>
+
 const Header = React.memo(
   ({ mobile, visible, toggleVisibility }) => {
 
@@ -260,34 +303,38 @@ const Header = React.memo(
               aria-orientation={mobile ? 'vertical' : 'horizontal'}
               aria-hidden={mobile && visible}>
 
+            {mobile &&
+              <li role='menuitem'
+                  tabIndex={(mobile && !visible) ? 1 : -1}
+                  onClick={toggleVisibility}>
+                <HeaderNavLink href='/'>
+                  Home
+                </HeaderNavLink>
+              </li>
+            }
+
             <li role='menuitem'
                 tabIndex={(mobile && !visible) ? 1 : -1}
                 onClick={toggleVisibility}>
-              <Link href='/audience'>
-                <Text variant='styles.label'>
+              <HeaderNavLink href='/audience'>
                   Audience
-                </Text>
-              </Link>
+              </HeaderNavLink>
             </li>
 
             <li role='menuitem'
                 tabIndex={(mobile && !visible) ? 1 : -1}
                 onClick={toggleVisibility}>
-              <Link href='/advocacy'>
-                <Text variant='styles.label'>
+              <HeaderNavLink href='/advocacy'>
                   Advocacy
-                </Text>
-              </Link>
+              </HeaderNavLink>
             </li>
 
             <li role='menuitem'
                 tabIndex={(mobile && !visible) ? 1 : -1}
                 onClick={toggleVisibility}>
-              <Link href='/sources'>
-                <Text variant='styles.headerLink'>
+              <HeaderNavLink href='/sources'>
                   Sources
-                </Text>
-              </Link>
+              </HeaderNavLink>
             </li>
 
           </ul>

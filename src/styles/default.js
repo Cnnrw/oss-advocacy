@@ -274,6 +274,22 @@ export const theme = {
   },
 
   links: {
+    headerLink: {
+      variant: 'text.heading',
+      fontSize: [0],
+      letterSpacing: '0.1em',
+      textDecoration: 'none',
+      textTransform: 'uppercase',
+      margin: 'auto',
+
+      ':focus': {
+        outline: 'none'
+      },
+
+      ':hover, .active': {
+        color: 'primary',
+      },
+    },
     nav: {
       fontSize: [1],
       fontWeight: 'bold',
@@ -300,48 +316,6 @@ export const theme = {
       }
     }
   },
-
-  // // rebass variants
-  // variants: {
-  //   avatar: {
-  //     width: 'avatar',
-  //     height: 'avatar',
-  //     borderRadius: 'circle'
-  //   },
-  //   card: {
-  //     p: 2,
-  //     bg: 'background',
-  //     boxShadow: 'card',
-  //     avatar: {
-  //       width: 'avatar',
-  //       height: 'avatar',
-  //       backgroundSize: 'cover',
-  //       backgroundPosition: 'center',
-  //       marginBottom: '3rem'
-  //     }
-  //   },
-  //   link: {
-  //     color: 'primary'
-  //   },
-  //   nav: {
-  //     fontSize: 1,
-  //     fontWeight: 'bold',
-  //     display: 'inline-block',
-  //     p: 2,
-  //     color: 'inherit',
-  //     textDecoration: 'none',
-  //     ':hover,:focus,.active': {
-  //       color: 'primary'
-  //     }
-  //   },
-  //   hr: {
-  //     width: '100%',
-  //     borderTop: 0,
-  //     borderBottom: '1px solid black',
-  //     my: 4
-  //   }
-  // },
-
   buttons: {
     primary: {
       fontSize: 2,
@@ -391,12 +365,6 @@ export const theme = {
       letterSpacing: '0.1em',
       textTransform: 'uppercase'
     },
-    headerLink: {
-      variant: 'text.heading',
-      fontSize: [0],
-      letterSpacing: '0.1em',
-      textTransform: 'uppercase'
-    },
     p: {
       variant: 'text.paragraph'
     },
@@ -407,7 +375,15 @@ export const theme = {
       borderBottomColor: 'black',
       my: 4
     },
+    a: {
+      color: theme => `${theme.colors.black}`,
+      borderBottom: theme => `${theme.colors.black}`,
 
+      ':hover': {
+        color: theme => `${theme.colors.primary}`,
+        borderBottomColor: theme => `${theme.colors.primary}`
+      }
+    },
     avatar: {
       width: 'avatar',
       height: 'avatar',
