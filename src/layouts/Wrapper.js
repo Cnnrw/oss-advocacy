@@ -1,3 +1,4 @@
+import CustomLink                                  from '@components/Link'
 import { MDXProvider }                             from '@mdx-js/react'
 import dynamic                                     from 'next/dynamic'
 import Head                                        from 'next/head'
@@ -21,6 +22,7 @@ const UIComponents = {
   Flex: Flex,
   Box: Box,
   Heading: Heading,
+  Link: props => <CustomLink {...props} />,
   Label: (props) => <Text variant='figureLabel' {...props} />,
 
   Globe: dynamic(() => import('@components/Globe/Globe')),

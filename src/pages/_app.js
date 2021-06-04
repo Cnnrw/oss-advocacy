@@ -7,8 +7,6 @@ import Wrapper   from '@layouts/Wrapper'
 import * as gtag from '@utils/ga'
 import PageLayout from '@layouts/BaseLayout'
 
-const Noop = ({ children }) => children
-
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
 
