@@ -402,11 +402,11 @@ export const theme = {
       }
     },
     hr: {
-      width: '100%',
+      width: '90%',
       borderTop: 0,
       borderBottom: `1px solid`,
       borderBottomColor: 'black',
-      my: 4
+      my: 4,
     },
   },
 }

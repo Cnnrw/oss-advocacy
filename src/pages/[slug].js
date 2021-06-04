@@ -20,7 +20,10 @@ const PostPage = ({ slug, source, frontMatter }) => {
            py={[1, 2]}
            as='article'
            className={'ArticlePage ' + frontMatter.section}
-           id='Article'>
+           id='Article'
+           sx={{
+             wordWrap: 'break-word'
+           }}>
 
         <section className='container'>
 
@@ -34,7 +37,7 @@ const PostPage = ({ slug, source, frontMatter }) => {
               <Heading color='black' variant='styles.label' mb={5}>
                 {frontMatter.date}
               </Heading>
-            <Box maxWidth='text' px={[4, 4, 5]}>
+            <Box maxWidth='text'>
               <MDXRemote {...source} />
             </Box>
           </section>
