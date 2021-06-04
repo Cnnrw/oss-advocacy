@@ -31,16 +31,18 @@ const PostPage = ({ slug, source, frontMatter }) => {
 
           {/*----- Post content -----*/}
           <section className='content'>
-            <Box px={[4, 4, 6]}>
+            <Box px={[4, 4, 5]}>
 
-              <Heading mt={6} mb={3}>
+              <Heading mt={6}
+                       mb={3}
+              >
                 {frontMatter.title}
               </Heading>
               <Heading color='black' variant='styles.label' mb={5}>
                 {frontMatter.date}
               </Heading>
             </Box>
-            <Box maxWidth='text' px={[4, 4, 6]}>
+            <Box maxWidth='text' px={[4, 4, 5]}>
               <MDXRemote {...source} />
             </Box>
           </section>

@@ -4,7 +4,7 @@ import path                                       from 'path'
 import React                                      from 'react'
 import { Box, Container, Divider, Heading, Text } from 'theme-ui'
 
-import Link                            from '@components/Link'
+import Link                               from '@components/Link'
 import Layout                             from '@layouts/BaseLayout'
 import { contentFilePaths, CONTENT_PATH } from '@utils/mdxUtils'
 
@@ -26,7 +26,11 @@ const Index = ({ pages }) =>
 
     <ul>
       {pages.map((post) => (
-        <li key={post.filePath}>
+        <li key={post.filePath}
+            style={{
+              cursor: 'pointer'
+            }}
+        >
           <Link href={`/${post.filePath.replace(/\.mdx?$/, '')}`}>
             {post.data.title}
           </Link>
