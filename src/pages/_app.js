@@ -5,6 +5,7 @@ import { useEffect }  from 'react'
 import SEO       from '@config/next-seo.config'
 import Wrapper   from '@layouts/Wrapper'
 import * as gtag from '@utils/ga'
+import PageLayout from '@layouts/BaseLayout'
 
 const Noop = ({ children }) => children
 
@@ -22,7 +23,7 @@ const App = ({ Component, pageProps }) => {
     }
   }, [router.events])
 
-  const Layout = Component.Layout || Noop
+  const Layout = Component.Layout || PageLayout
 
   return (
     <Wrapper>

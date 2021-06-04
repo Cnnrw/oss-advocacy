@@ -1,24 +1,32 @@
 const withPlugins = require('next-compose-plugins')
 const images = require("next-images")
 
-module.exports = withPlugins([
-    [images],
-  ], {
-  future: {
-    webpack5: true,
-  },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    config.module.rules.push(
-      {
-        test: /\.csv$/,
-        loader: 'csv-loader',
-        options: {
-          dynamicTyping: true,
-          header: true,
-          skipEmptyLines: true
-      }
-    })
+const withMDX = require('@next/mdx')({
+  extensions: /\.mdx?$/,
+})
 
-    return config
-  }
+module.exports = withPlugins(
+  [
+    [withMDX],
+    [images],
+  ],
+  {
+    pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+    future: {
+      webpack5: true,
+    },
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+      config.module.rules.push(
+        {
+          test: /\.csv$/,
+          loader: 'csv-loader',
+          options: {
+            dynamicTyping: true,
+            header: true,
+            skipEmptyLines: true
+          }
+        })
+
+      return config
+    }
 });

@@ -59,7 +59,7 @@ const HeaderNav = styled.nav`
     position: fixed;
     width: 100%;
     height: 100vh;
-    top: 4.9rem;
+    top: 3rem;
     border-top: 1px solid ${props.theme.colors.black};
     left: 0;
     z-index: 420;
@@ -70,12 +70,13 @@ const HeaderNav = styled.nav`
     & ul {
       width: 100%;
       margin: 0;
-      padding: 0;
+      padding: .5rem;
     }
 
     & li {
       width: 100%;
       display: block;
+      padding: .5rem;
       border-bottom: 1px solid ${props.theme.colors.black};
 
       &.toggle {
@@ -198,11 +199,12 @@ const MobileButton = ({ toggleVisibility, visible, children }) =>
     {children}
   </Box>
 
-const HeaderTitle = ({ href, ariaLabel, children }) =>
+const HeaderTitle = ({ href, ariaLabel, visible, toggle, children }) =>
   <Link href={href}
         aria-labelledby='Navigation Bar'
         passHref>
     <NavLink
+      onClick={visible && toggle}
       aria-labelledby={ariaLabel}
       sx={{
         fontSize: [2, 3, 5],
@@ -320,17 +322,20 @@ const Header = React.memo(
           </MobileButton>
         )}
 
-        <Flex mr={4}
-              ml={3}
-              justifyContent="center"
+        <Flex justifyContent="center"
               alignContent="center"
               flexDirection="column"
-              className="toggle">
+              className="toggle"
+              sx={{
+                mr: [0, 4]
+              }}>
           <ThemeToggle />
         </Flex>
 
         <HeaderTitle href='/'
-                     ariaLabel='OSS Advocacy'>
+                     ariaLabel='OSS Advocacy'
+                     visible={visible}
+                     toggle={toggleVisibility}>
           OSS ADVOCACY
         </HeaderTitle>
 
