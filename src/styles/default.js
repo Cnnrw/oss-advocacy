@@ -92,14 +92,14 @@ export const theme = {
     heading: {
       fontFamily: 'heading',
       lineHeight: '1.25',
-      fontSize: [6, null, 7, null, 8, null, null],
+      fontSize: [6, null, 7, null, null, 8],
       marginBottom: 2
     },
     subheading: {
       fontFamily: 'heading',
       lineHeight: '1.25',
       //fontSize: [2, 3, 4, 5],
-      fontSize: [3, null, 4, 6, null, null, 10],
+      fontSize: [3, null, 4, 6, null, null, 7],
       marginBottom: 2
     },
     paragraph: {

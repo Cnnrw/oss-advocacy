@@ -322,16 +322,16 @@ const Header = React.memo(
             <li role='menuitem'
                 tabIndex={(mobile && !visible) ? 1 : -1}
                 onClick={toggleVisibility}>
-              <HeaderNavLink href='/audience'>
-                  Audience
+              <HeaderNavLink href='/advocacy'>
+                  Advocacy
               </HeaderNavLink>
             </li>
 
             <li role='menuitem'
                 tabIndex={(mobile && !visible) ? 1 : -1}
                 onClick={toggleVisibility}>
-              <HeaderNavLink href='/advocacy'>
-                  Advocacy
+              <HeaderNavLink href='/audience'>
+                Audience
               </HeaderNavLink>
             </li>
 
