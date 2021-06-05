@@ -15,7 +15,7 @@ module.exports = withPlugins(
     future: {
       webpack5: true,
     },
-    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    webpack: (config, options) => {
       config.module.rules.push(
         {
           test: /\.csv$/,

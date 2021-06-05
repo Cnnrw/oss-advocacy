@@ -15,7 +15,7 @@ const BaseLayout = ({ title, description, twitter, openGraph, children }) => (
 
     <Box bg='white'
          as='main'
-         px={[5, 4, 4]}
+         px={[3, null, 4, 5, 6, 7]}
          pt='4.8rem'
          maxWidth='1920px'
          margin='auto'

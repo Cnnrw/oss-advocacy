@@ -167,9 +167,10 @@ const MobileButton = ({ toggleVisibility, visible, children }) =>
 
       '& .line': {
         fill: 'none',
-        transition: theme => `stroke-dasharray ${theme.animation.default},
-                       strokeDashoffset ${theme.animation.default}`,
-        stroke: theme => `${theme.colors.black}`,
+        transition: `stroke-dasharray ${theme => theme.animation.default},
+                       strokeDashoffset ${theme => theme.animation.default}`,
+
+        stroke: `black`,
         strokeWidth: `5.5`,
         strokeLinecap: `round`
       },

@@ -10,20 +10,21 @@ import List       from '@components/List/List'
 import ListItem   from '@components/List/ListItem'
 
 const UIComponents = {
-  h1: (props) => <Heading variant='header' {...props} />,
-  h2: (props) => <Heading variant='subheader' {...props} />,
-  h3: (props) => <Heading variant='h3' {... props} />,
-  h4: (props) => <Heading variant='h4' {... props} />,
-  p: (props) => <Text as='p' variant='paragraph' {... props} />,
-  hr: (props) => <Box as='hr' variant='hr' {... props} />,
+  h1: props => <Heading as='h1' variant='heading' {...props} />,
+  h2: props => <Heading as='h2' variant='subheading' {...props} />,
+  h3: props => <Heading as='h3' variant='h3' {... props} />,
+  h4: props => <Heading as='h4' variant='h4' {... props} />,
+  p: props => <Text as='p' variant='paragraph' {... props} />,
+  hr: props => <Box as='hr' variant='hr' {... props} />,
   ul: props => <List {...props} />,
   li: props => <ListItem {...props} />,
-  pre: (props) => <div {... props} />,
+  pre: props => <div {... props} />,
   Flex: Flex,
   Box: Box,
-  Heading: Heading,
+  Title: props => <Heading as='h1' variant='heading'
+                           mt={6} mb={3}{...props} />,
   Link: props => <CustomLink {...props} />,
-  Label: (props) => <Text variant='figureLabel' {...props} />,
+  Label: props => <Text variant='figureLabel' {...props} />,
 
   Globe: dynamic(() => import('@components/Globe/Globe')),
   Head

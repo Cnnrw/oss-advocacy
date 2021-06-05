@@ -3,7 +3,7 @@ import matter                      from 'gray-matter'
 import { MDXRemote }               from 'next-mdx-remote'
 import { serialize }               from 'next-mdx-remote/serialize'
 import path                        from 'path'
-import { Box, Heading } from 'theme-ui'
+import { Box, Container, Heading } from 'theme-ui'
 
 import SEO                                from '@components/SEO'
 import Layout                             from '@layouts/BaseLayout'
@@ -16,32 +16,30 @@ const PostPage = ({ slug, source, frontMatter }) => {
            title={frontMatter.title}
            description={frontMatter.description} />
 
-      <Box bg='white'
-           py={[1, 2]}
-           as='article'
-           className={'ArticlePage ' + (frontMatter.section ?? '')}
+      <Box as='article'
            id='Article'
-           sx={{
-             wordWrap: 'break-word'
-           }}>
+           className={'ArticlePage ' + (frontMatter.section ?? '')}
+           bg='white'
+           py={[1, 2]}>
 
-        <section className='container'>
+        <Heading as='h1' id='Article Title' mt={6} mb={3}>{frontMatter.title}</Heading>
 
-          {/*----- Post content -----*/}
-          <section className='content'>
+        {frontMatter.date && (
+          <Heading color='black' variant='styles.label' mb={4}>{frontMatter.date}</Heading>
+        )}
 
-              <Heading mt={6}
-                       mb={3}>
-                {frontMatter.title}
-              </Heading>
-              <Heading color='black' variant='styles.label' mb={5}>
-                {frontMatter.date}
-              </Heading>
-            <Box maxWidth='text'>
-              <MDXRemote {...source} />
-            </Box>
-          </section>
-        </section>
+        <Container
+          as='section'
+          id='Article Content'
+          sx={{
+            wordWrap: 'break-word'
+          }}>
+
+          <Box maxWidth='text'>
+            <MDXRemote {... source} />
+          </Box>
+
+        </Container>
       </Box>
     </>
   )

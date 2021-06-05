@@ -42,7 +42,7 @@ export const gradients = {
 
 export const theme = {
   animation,
-  breakpoints: [320, 480, 769, 1025, 1201].map(w => `${w}px`),
+  breakpoints: [320, 480, 769, 1023, 1201, 1920].map(w => `${w}px`),
   mediaQueries: {
     mobile: `@media screen and (min-width: 320px)`,
     tablet: `@media screen and (min-width: 768px)`,
@@ -55,6 +55,7 @@ export const theme = {
   fonts,
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
+    light: 100,
     body: 400,
     heading: 500,
     bold: 700
@@ -63,6 +64,7 @@ export const theme = {
     body: 1.5,
     heading: 1.25
   },
+  /*      0  1  2   3   4   5    6    7    8  */
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   sizes: {
     mobile: '320px',
@@ -90,19 +92,20 @@ export const theme = {
     heading: {
       fontFamily: 'heading',
       lineHeight: '1.25',
-      fontSize: [5, 5, 6, 6],
-      marginBottom: 3
+      fontSize: [6, null, 7, null, 8, null, null],
+      marginBottom: 2
     },
     subheading: {
       fontFamily: 'heading',
       lineHeight: '1.25',
-      fontSize: [3, 3, 4, 4],
-      marginBottom: 3
+      //fontSize: [2, 3, 4, 5],
+      fontSize: [3, null, 4, 6, null, null, 10],
+      marginBottom: 2
     },
     paragraph: {
       fontFamily: 'body',
       lineHeight: '1.75',
-      fontSize: [1, 2],
+      fontSize: [1, null, 2, null, 3, null, 5],
       marginBottom: 4,
       '& code': {
         py: 1,
@@ -117,7 +120,7 @@ export const theme = {
     list: {
       fontFamily: fonts.body,
       lineHeight: '1.75',
-      fontSize: [1, 2],
+      fontSize: [1, null, null, 3, null, null, 5],
       marginBottom: 3
     },
     display: {
@@ -131,8 +134,9 @@ export const theme = {
     },
     figureLabel: {
       fontFamily: 'monospace',
-      lineHeight: '1.25',
-      fontSize: ['10px'],
+      fontSize: ['9px', null, '10px', '11px', null, null, 2],
+      fontWeight: 'light',
+      color: 'black',
       letterSpacing: '0.1em',
       textTransform: 'uppercase',
       marginTop: 1,
@@ -215,13 +219,16 @@ export const theme = {
       fontFamily: 'body',
       fontWeight: 'normal',
     },
+    h1: {
+      variant: 'text.heading'
+    },
     h2: {
-      variant: 'text.heading',
-      fontSize: [2, 3, 4, 5],
+      variant: 'text.subheading',
     },
     h3: {
       variant: 'text.heading',
-      fontSize: [2, 2, 3, 3]
+      fontSize: [1, 2, 3, 4],
+      marginBottom: 1
     },
     h4: {
       variant: 'text.heading',
@@ -270,11 +277,11 @@ export const theme = {
       }
     },
     hr: {
-      width: '90%',
+      width: '100%',
       borderTop: 0,
       borderBottom: `1px solid`,
       borderBottomColor: 'black',
-      my: 4,
+      mb: [1, 2, null, 3]
     },
   },
 }
