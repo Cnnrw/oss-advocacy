@@ -1,7 +1,7 @@
 import ThemeToggle                  from '@components/ThemeToggle'
 import React                        from 'react'
 import styled                       from '@emotion/styled'
-import { Link as A, Box, Flex, NavLink, Text } from 'theme-ui'
+import { Box, Flex, NavLink} from 'theme-ui'
 import Link                         from 'next/link'
 
 const HeaderNav = styled.nav`
@@ -248,16 +248,23 @@ const HeaderTitle = ({ href, ariaLabel, visible, toggle, children }) =>
     </NavLink>
   </Link>
 
-const HeaderNavLink = ({ as, href, ...props }) =>
+const HeaderNavLink = ({ as, href, tabIndex, onClick, children }) =>
+  <li role='menuitem'
+      tabIndex={tabIndex}
+      onClick={onClick}
+      style={{
+        outline: 'none'
+      }}>
   <Link as={as}
         href={href}
         passHref>
-    <A variant='headerLink'
+    <NavLink variant='headerLink'
       sx={{
         textDecoration: 'none',
         border: '0',
         position: 'relative',
         display: 'block',
+        outline: 'none',
 
        '& span': {
           display: 'none'
@@ -292,9 +299,11 @@ const HeaderNavLink = ({ as, href, ...props }) =>
           transform: 'translate(-1.25em, -0.75em) scaleX(1)'
         }
       }}
-      {...props}
-    />
+    >
+      {children}
+    </NavLink>
   </Link>
+</li>
 
 const Header = React.memo(
   ({ mobile, visible, toggleVisibility }) => {
@@ -310,39 +319,30 @@ const Header = React.memo(
               aria-hidden={mobile && visible}>
 
             {mobile &&
-              <li role='menuitem'
-                  tabIndex={(mobile && !visible) ? 1 : -1}
-                  onClick={toggleVisibility}>
-                <HeaderNavLink href='/'>
-                  Home
-                </HeaderNavLink>
-              </li>
+              <HeaderNavLink href='/'
+                             tabIndex={(mobile && !visible) ? 1 : -1}
+                             onClick={toggleVisibility}>
+                Home
+              </HeaderNavLink>
             }
 
-            <li role='menuitem'
-                tabIndex={(mobile && !visible) ? 1 : -1}
-                onClick={toggleVisibility}>
-              <HeaderNavLink href='/advocacy'>
-                  Advocacy
-              </HeaderNavLink>
-            </li>
+            <HeaderNavLink href='/advocacy'
+                           tabIndex={(mobile && !visible) ? 1 : -1}
+                           onClick={toggleVisibility}>
+              Advocacy
+            </HeaderNavLink>
 
-            <li role='menuitem'
-                tabIndex={(mobile && !visible) ? 1 : -1}
-                onClick={toggleVisibility}>
-              <HeaderNavLink href='/audience'>
-                Audience
-              </HeaderNavLink>
-            </li>
+            <HeaderNavLink href='/audience'
+                           tabIndex={(mobile && !visible) ? 2 : -1}
+                           onClick={toggleVisibility}>
+              Audience
+            </HeaderNavLink>
 
-            <li role='menuitem'
-                tabIndex={(mobile && !visible) ? 1 : -1}
-                onClick={toggleVisibility}>
-              <HeaderNavLink href='/sources'>
-                  Sources
-              </HeaderNavLink>
-            </li>
-
+            <HeaderNavLink href='/sources'
+                           tabIndex={(mobile && !visible) ? 3 : -1}
+                           onClick={toggleVisibility}>
+              Sources
+            </HeaderNavLink>
           </ul>
         </HeaderNav>
 
