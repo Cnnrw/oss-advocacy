@@ -73,12 +73,7 @@ const Globe = props => {
 
   /* --- Globe size ----------------------------------------------------------*/
   useEffect(() => {
-    if (globeRef.current && size) {
-      globeRef.current.camera().aspect = (size.width / size.height)
-      globeRef.current.camera().updateProjectionMatrix()
-
-      globeRef.current.renderer().setSize(size.width, size.height)
-    }
+    resizeGlobe(size)
   }, [size])
 
   useEffect(() => {
@@ -103,12 +98,20 @@ const Globe = props => {
     [countries, populationData]
   )
 
+  const resizeGlobe = (size) => {
+    if (globeRef.current) {
+      globeRef.current.camera().aspect = (size.width / size.height)
+      globeRef.current.camera().updateProjectionMatrix()
+
+      globeRef.current.renderer().setSize(size.width, size.height)
+    }
+  }
+
   const colorScale = scaleSequentialSqrt(interpolateYlOrRd)
 
   const getVal = feat => feat.properties.internetUsers / Math.max(1e4, feat.properties.population)
 
   const fadeIn = keyframes({ from: { opacity: 0 }, to: { opacity: 1 } })
-
 
   return (
     <AspectRatio
@@ -132,7 +135,10 @@ const Globe = props => {
           backgroundImageUrl={universeTexture}
           lineHoverPrecision={0}
 
-          onGlobeReady={() => setShowSpinner(false)}
+          onGlobeReady={() => {
+            resizeGlobe(size)
+            setShowSpinner(false)
+          }}
 
           polygonsData={countries.features.filter(d => d.properties.iso_a2 !== 'AQ')}
           polygonAltitude={altitude}
