@@ -283,6 +283,9 @@ export const theme = {
       borderBottomColor: 'black',
       mb: [1, 2, null, 3]
     },
+    spinner: {
+      color: 'primary'
+    }
   },
 }
 
