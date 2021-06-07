@@ -1,9 +1,7 @@
-import GlobeTmpl from 'react-globe.gl'
+import GlobeImpl from 'react-globe.gl'
 
-const GlobeWrapper = ({ forwardRef, height, width, ...otherProps }) => (
-  <GlobeTmpl
-    height={height}
-    width={width}
+const GlobeWrapper = ({ forwardRef, ...otherProps }) => (
+  <GlobeImpl
     {...otherProps}
     ref={forwardRef} />
 );
