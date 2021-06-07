@@ -65,7 +65,7 @@ const Globe = props => {
           if (globeRef.current) {
             globeRef.current.controls().autoRotate = true;
             globeRef.current.controls().autoRotateSpeed = 0.2;
-            globeRef.current.pointOfView({ altitude: 8 }, 2500)
+            globeRef.current.pointOfView({ altitude: 6 }, 2500)
           }
         }, 3000)
       })
