@@ -25,7 +25,7 @@ const PostPage = ({ slug, source, frontMatter }) => {
         <Heading as='h1' id='Article Title' mt={6} mb={3}>{frontMatter.title}</Heading>
 
         {frontMatter.date && (
-          <Heading color='black' variant='styles.label' mb={4}>{frontMatter.date}</Heading>
+          <Heading color='black' variant='styles.label' mb={4}>Last Updated: {frontMatter.date}</Heading>
         )}
 
         <Container
